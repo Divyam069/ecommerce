@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>User Shiping Page</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body bgcolor="#f8f9fa">
+    
+    <div>
+        <div class="log">
+        <h1 class="login">Shiping form</h1>
+        </div>
+    </div>
+<div class="parent">
+    {% comment %} <form class="btn btn-primary" method="POST">
+        {% csrf_token %}
+        <!-- RAZORPAY INTEGRATION HERE -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_qDwTmKnksUVsaC"
+          data-amount="{{ razor }}" data-currency="INR" data-buttontext="Pay with Razorpay"
+          data-name="Professional Cipher" data-description="Django and Data Science"
+          data-image="https://example.com/your_logo.jpg" data-prefill.name="PC"
+          data-prefill.email="" data-theme.color="#F37254"></script>
+      </form> {% endcomment %}
+    <form  method="POST">
+        {% csrf_token %} 
+    <div class="box">
+
+        <div class="user">
+            <label for="text"> <b> UserName</b></label>
+            
+            <input type="name" value={{abc.name}} name="userName" class="mail">
+            </div>
+        <div class="user">
+        <label for="email"> <b>  Email</b></label>
+        
+        <input type="email" value={{abc.email}} name="userEmail" class="mail">
+        </div>
+        <div class="user">
+            <label for="number"> <b> Contact no</b></label>
+            
+            <input type="number" value={{abc.contact}} name="userContact" class="mail">
+            </div>
+            <div class="user">
+                <label for="number"> <b> Address</b></label>
+                
+                <input type="text" placeholder="address" name="address" class="mail">
+                </div>
+                <div class="user">
+                    <label for="number"> <b> city</b></label>
+                    
+                    <input type="text" placeholder="city" name="city" class="mail">
+                    </div>
+                    <div class="user">
+                        <label for="number"> <b> State</b></label>
+                        
+                        <input type="text" placeholder="state" name="state" class="mail">
+                        </div>
+                        <div class="user">
+                            <label for="number"> <b> pincode</b></label>
+                            
+                            <input type="text" placeholder="pincode" name="pincode" class="mail">
+                            </div>
+                            <div class="user">
+                                <label for="number"> <b> order amt</b></label>
+                                
+                                <input type="number" value={{totalamt}} name="orderAmount" class="mail" readonly>
+                                </div>
+
+                                <div class="user">
+                                    <label for="number"> <b> PaymentVia</b></label>
+                                        <br>
+                                      <input type="radio"  name="paymentVia" value="Online">
+                                        <label for="Online">Online</label><br>
+                                        <input type="radio"  name="paymentVia" value="Cash">
+                                        <label for="Cash">Cash</label>
+                                    </div>
+
+                                
+                               
+        
+        <div>
+        <button class="btn" type="submit"><b> place order</b></button>
+        </div>
+    </div>
+    {% if message %}
+    <script>alert("{{message}}")</script>
+    {% endif %}
+    
+    </form>
+</div>
+
+    
+
+</body>
+</html>

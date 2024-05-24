@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if noitem > 0 %}
+<div class="contra" style="	margin: 0;
+                            padding: 0;
+                            background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+                            height: 100vh;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+<div class="CartContainer">
+    <div class="Header">
+        <h3 class="Heading">Shopping Cart</h3>
+        <h5 class="Action">Remove all</h5>
+    </div>
+    {% for i in cartlist  %}
+    <div class="Cart-Items">
+            <div class="image-box">
+                <img src="{{i.productimage.url}}" style="height:120px ;" />
+            </div>
+            <div class="about">
+                <h1 class="title">{{i.productname}}</h1>   
+            </div>
+            <div class="counter">
+                <div class="btn">+</div>
+                <div class="count">{{i.productquantity}}</div>
+                <div class="btn">-</div>
+            </div>
+            <div class="prices">
+                <a class='remove' href="{% url 'cdelete' id=i.id %}">Remove</a>
+                <div class="amount">price:{{i.productprice}}</div>
+                <br>
+                <div class="prices">
+                    <div class="amount">total price:{{i.producttotalprice}}</div>
+                </div>
+            </div>
+            <br>       
+    </div>
+    {% endfor %}
+    <hr> 
+    <div class="checkout">
+    <div class="total">
+        <div>
+            <div class="Subtotal">Sub-Total</div>
+            <div class="items">{{noitem}} items</div>
+        </div>
+        <div class="total-amount">{{totalamt}}</div>
+    </div>
+    <button class="button"><a  href="{% url 'shiping' %}">Checkout</a></button></div>
+</div>
+</div>
+{% else %}
+
+<h1>Go for Shopping</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+  <form class="btn btn-primary" method="POST">
+    {% csrf_token %}
+    <!-- RAZORPAY INTEGRATION HERE -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_8iwTTjUECLclBG"
+      data-amount="1000" data-currency="INR" data-buttontext="Pay with Razorpay"
+      data-name="Professional Cipher" data-description="Django and Data Science"
+      data-image="https://example.com/your_logo.jpg" data-prefill.name="PC"
+      data-prefill.email="" data-theme.color="#F37254"></script>
+  </form>
+
+{% endblock %}

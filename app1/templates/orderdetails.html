@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col py-3">
+    <section>
+        <div class="container py-5">
+            <div class="card mb-3" style="background-color: #eee;">
+                <div class="row" >
+                    <div class="col-md-8 col-lg-8 mb-8 mb-lg-8">
+                        <div class="card-body">
+                            <h4>shipping Address</h4>
+                            <h5 class="mb-0" >{{ OrderDetailData.name }}</h5>
+                            <h6 class="mb-0" >{{ OrderDetailData.address }}</h6>
+                        </div>
+                        <div class="card-body" >
+                            <h5 class="mb-0" >Phone Number</h5>
+                            <h6 class="mb-0" >{{ OrderDetailData.contact }}</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-4">
+                        <div class="card-body" >
+                            <h5 class="mb-0" >More Action</h5>
+                            <h5 class="mb-0" >Payment Via : 
+                                {% if OrderDetailData.paymentVia == 'Online' %}
+                                    {{ OrderDetailData.paymentVia }} ({{ OrderDetailData.paymentMethod }})
+                                    <h5>TransactionId:({{ OrderDetailData.transactionId }})</h5>
+                                {% else %}
+                                    {{ OrderDetailData.paymentVia }}
+                                {% endif %}
+                            </h5>
+                        </div> 
+                        <div class="card-body" >
+                            <h5 class="mb-0" >Order Amount : </h5>
+                            <h6 class="mb-0" >₹{{ OrderDetailData.orderAmount }}</h6>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            {% for i in CartData %}
+            <div class="card mb-3 " style="background-color: #eee;">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-4">
+                        <img src="{{ i.productImage}}" alt="image" style="height:200px; width:300px; margin:7% 0% 0% 7% "/>
+                    </div>
+                    <div class="col-md-8 col-lg-8 mb-8 mb-lg-8">
+                        <h2>{{ i.productName}}</h2>
+                        <h3 style="margin-top: 5%;">Qty : {{ i.qty}} * ₹{{ i.price}} = ₹{{ i.totalPrice}}</h3>
+                    </div>
+                </div>    
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

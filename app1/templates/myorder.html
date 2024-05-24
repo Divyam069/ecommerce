@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="col py-3">
+    <section>
+        <div class="container py-5">
+            {% for i in orderdata %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card mb-3" style="background-color: #eee;">
+                    <div class="row" >
+                        <div class="col-md-6 col-lg-6 mb-6 mb-lg-6">
+                            <div class="card-body">
+                                <h5 class="mb-0" >Order Id : {{ i.id }}</h5>
+                            </div>
+                            <div class="card-body" >
+                                <h5 class="mb-0" >Order Date : {{ i.orderDate }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 mb-6 mb-lg-6">
+                            <div class="card-body" >
+                                <h5 class="mb-0" >Payment Via : 
+                                    {% if i.paymentVia == 'Online' %}
+                                        {{ i.paymentVia }} ({{ i.paymentMethod }})
+                                        <h5>TransactionId:({{ i.transactionId }})</h5>
+                                    {% else %}
+                                        {{ i.paymentVia }}
+                                    {% endif %}
+                                </h5>
+                            </div>
+                            <div class="card-body" >
+                                <h5 class="mb-0" >Order Amount : ₹{{ i.orderAmount }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="hidden" name="orderId" value="{{ i.id }}" />
+                        <input type="submit"  class="form-submit"
+                            value="View" />
+                    </div>
+                </div>
+            </form>    
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

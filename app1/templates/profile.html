@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>User Profile Page</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body bgcolor="#f8f9fa">
+    
+    <div>
+        <div class="log">
+        <h1 class="login">Profile form</h1>
+        </div>
+    </div>
+<div class="parent">
+    <form  method="POST">
+        {% csrf_token %} 
+    <div class="box">
+
+        <div class="user">
+            <label for="text"> <b> Name</b></label>
+            
+            <input type="name" placeholder="{{abc.name}}"  name="name" class="mail">
+            </div>
+        <div class="user">
+        <label for="email"> <b>  Email</b></label>
+        
+        <input type="email" placeholder=" {{abc.email}}" value=" {{abc.email}}" name="email" class="mail" readonly>
+        </div>
+        
+    
+        <div class="pass">
+        <label for="password"><b>Password</b></label>
+        
+        <input type="password" placeholder="{{abc.password}}"  class="mail" name="password">
+        </div>
+    
+        
+        <div>
+        <button class="btn" type="submit"><b> Submit now</b></button>
+        </div>
+    </div>
+    {% comment %} {% if message %}
+    <script>alert("{{message}}")</script>
+    {% endif %} {% endcomment %}
+    
+    </form>
+</div>
+
+    
+
+</body>
+</html>
